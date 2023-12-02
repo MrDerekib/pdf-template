@@ -6,6 +6,7 @@ df = pd.read_csv("topics.csv")
 
 for index, row in df.iterrows():
     title = row["Topic"]
+    pages = row["Pages"]
 
     pdf.add_page()
     pdf.set_font(family="Helvetica", style="B", size=24)
@@ -14,5 +15,9 @@ for index, row in df.iterrows():
     pdf.set_draw_color(100, 100, 100)
     pdf.set_line_width(1)
     pdf.line(10, 21, 200, 21)
+
+    for i in range(pages -1):
+        pdf.add_page()
+
 
 pdf.output("output.pdf")
